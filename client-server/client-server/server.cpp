@@ -50,6 +50,33 @@ int main(int argc,char** argv)
         std::cout << "An error has occurred listening to the listener-socket: " << strerror(errno) << std::endl;
         return EXIT_FAILURE;
     }
+    //define data types to hold the portaddress of the peer as well as the length of the portaddress of the peer
+    struct sockaddr_in peer_address;
+    socklen_t peer_socklen;
+    //accept the next connection in the listener_port queue
+    //this will return a new socket which can be used for communication with the peer
+    int peer_socket=accept(listening_port,(sockaddr*)&peer_address,&peer_socklen);
+    if(peer_socket<0){
+        std::cout << "An error has occured accepting the peer socket: " << strerror(errno) << std::endl;
+        return(EXIT_FAILURE);
+    }
+    //close the listening socket
+    close(listening_port);
 
-
+    //write a message into the socket
+    write(peer_socket,"Hello!\n",7);
+    //receive some data from the socket
+    char buffer[1024];
+    //read a maximum of 1024 character into buffer
+    //returns the number of bytes read or a somehting negative in case of an error
+    res=read(peer_socket,buffer,sizeof(buffer));
+    if(res<0){
+        std::cout << "An error has occurred reading from the socket: " << strerror(errno) << std::endl;
+        return(EXIT_FAILURE);
+    }
+    buffer[res]=0; //set the null character at the end of the received string
+    std::cout << "Received " << res << " bytes: " << buffer << std::endl;
+    //close the peer-socket and exit the program
+    close(peer_socket);
+    return EXIT_SUCCESS;
 }
