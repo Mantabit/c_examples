@@ -5,3 +5,11 @@
 	<stdlib.h>
 	<fstream>
 
+1545076466 source:/home/dvarx/c_examples/python_c_api/main.cpp
+	<python3.6/Python.h>
+	<python3.6/listobject.h>
+	<stdlib.h>
+	<fstream>
+	<unistd.h>
+	<math.h>
+
