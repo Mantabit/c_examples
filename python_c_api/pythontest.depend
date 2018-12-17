@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1545033805 source:/home/dvarx/c_examples/threads/pythontest/main.cpp
+	<python3.6/Python.h>
+	<python3.6/listobject.h>
+	<stdlib.h>
+	<fstream>
+

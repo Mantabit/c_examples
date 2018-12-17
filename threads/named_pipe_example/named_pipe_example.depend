@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1544963359 source:/home/dvarx/c_examples/threads/named_pipe_example/main.cpp
+	<fcntl.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<unistd.h>
+	<stdlib.h>
+
+1544964802 source:/home/dvarx/c_examples/threads/named_pipe_example/mainreceiver.cpp
+	<fcntl.h>
+	<sys/stat.h>
+	<sys/types.h>
+	<unistd.h>
+	<stdlib.h>
+	<stdio.h>
+

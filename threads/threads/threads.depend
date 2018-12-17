@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1543266196 source:/home/dvarx/c_examples/threads/threads/main.c
-	<string.h>
-	<stdlib.h>
-	<pthread.h>
-	<stdio.h>
-	<unistd.h>
-
