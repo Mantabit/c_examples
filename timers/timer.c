@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <signal.h>
+#include <time.h>
 
 static int alarm_fired=0;
 static int end_program=0;
@@ -30,6 +31,9 @@ unsigned int alarm (unsigned int seconds)
 }
 
 int main(int argc,char* arv[]){
+	static struct timespec tik,tok;
+	//store the start time in tik
+	clock_gettime(CLOCK_MONOTONIC,&tik);
 	//register the alarm handler
 	signal(SIGALRM,catch_alarm);
 	signal(SIGINT,catch_sigint);
@@ -37,7 +41,10 @@ int main(int argc,char* arv[]){
 	alarm(2);
 	while(1){
 		if(alarm_fired){
-			printf("alarm has been fired \n");
+			clock_gettime(CLOCK_MONOTONIC,&tok);
+			long deltaT=(tok.tv_sec-tik.tv_sec)*1e9-(tok.tv_nsec-tik.tv_nsec);
+			printf("alarm has been fired, current time: %'lu\n",deltaT);
+			fflush(stdout);
 			alarm_fired=0;
 		}
 		if(end_program){
