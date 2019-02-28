@@ -10,6 +10,8 @@
 volatile sig_atomic_t alarm_fired=0;
 volatile sig_atomic_t end_program=0;
 
+
+
 /*
  * Don't call printf() in a signal handler since it is neither reentrant nor thread-safe
  * and therefore also not interrupt-safe
