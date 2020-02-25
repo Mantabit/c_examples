@@ -19,3 +19,5 @@ gcc main.o -L static -l static -o main_static.out
 #link using dynamic library
 gcc main.o -Ldynamic -ldynamic -o main_dynamic.out
 
+#add /dynamic directory to loader search path
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PWD/dynamic
